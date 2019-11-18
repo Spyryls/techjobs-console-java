@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,6 +29,26 @@ public class JobData {
      * @param field The column to retrieve values from
      * @return List of all of the values of the given field
      */
+
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+
+        // load data, if not already loaded
+        loadData();
+
+        ArrayList<HashMap<String, String>> allValuesFound = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            Collection<String> fullTermSearch = row.values();
+
+            for (String entry : fullTermSearch) {
+                if (entry.toLowerCase().contains(value.toLowerCase())) {
+                    allValuesFound.add(row);
+                }
+            }
+
+        } return allValuesFound;
+    }
+
     public static ArrayList<String> findAll(String field) {
 
         // load data, if not already loaded
@@ -76,7 +97,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
