@@ -61,9 +61,7 @@ public class TechJobs {
                 System.out.println("\nSearch term: ");
                 String searchTerm = in.nextLine();
 
-                if (!searchField.equals("")) {
-                    System.out.println(("Search is not valid. Please, re-enter search parameters."));
-                }
+
 
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
@@ -116,11 +114,17 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-       for (int i = 0; i < someJobs.size(); i++) {
-           System.out.println("\n*****");
-           for (Map.Entry jobResults : someJobs.get(i).entrySet()) {
-               System.out.println((jobResults.getKey() + ": " + jobResults.getValue()));
-           } System.out.println("*****\n");
-       }
+        if (someJobs.size() == 0) {
+            System.out.println(("Your search rendered no results."));
+        }
+
+        for (int i = 0; i < someJobs.size(); i++) {
+            System.out.println("\n*****");
+            for (Map.Entry jobResults : someJobs.get(i).entrySet()) {
+                   System.out.println((jobResults.getKey() + ": " + jobResults.getValue()));
+            }
+            System.out.println("*****\n");
+
+        }
     }
 }
