@@ -61,7 +61,7 @@ public class TechJobs {
                 System.out.println("\nSearch term: ");
                 String searchTerm = in.nextLine();
 
-                if (searchField.isEmpty()) {
+                if (!searchField.equals("")) {
                     System.out.println(("Search is not valid. Please, re-enter search parameters."));
                 }
 
