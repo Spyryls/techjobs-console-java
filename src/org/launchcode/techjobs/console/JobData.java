@@ -38,7 +38,7 @@ public class JobData {
         ArrayList<HashMap<String, String>> allValuesFound = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-            Collection<String> fullTermSearch = row.values();
+            ArrayList<String> fullTermSearch = (ArrayList<String>) row.values();
 
             for (String entry : fullTermSearch) {
                 if (entry.toLowerCase().contains(value.toLowerCase())) {
