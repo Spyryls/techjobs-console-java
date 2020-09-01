@@ -118,10 +118,10 @@ public class TechJobs {
             System.out.println(("**Your search rendered no results.**"));
         }
 
-        for (int i = 0; i < someJobs.size(); i++) {
+        for (HashMap<String, String> someJob : someJobs) {
             System.out.println("\n*****");
-            for (Map.Entry jobResults : someJobs.get(i).entrySet()) {
-                   System.out.println((jobResults.getKey() + ": " + jobResults.getValue()));
+            for (Map.Entry<String, String> jobResults : someJob.entrySet()) {
+                System.out.println((jobResults.getKey() + ": " + jobResults.getValue()));
             }
             System.out.println("*****\n");
         }
